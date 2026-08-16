@@ -1,10 +1,8 @@
-/* src/index.css */
 :root {
   --bg: #f4f4f0;
   --text: #111111;
-  --accent: #ff5000; /* Safety Orange */
+  --accent: #ff5000; 
   
-  /* Upgraded Fonts */
   --mono: 'Space Mono', monospace;
   --sans: 'Space Grotesk', sans-serif;
 }
@@ -26,7 +24,6 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* Industrial Typography */
 h1, h2, h3, h4 {
   text-transform: uppercase;
   line-height: 0.9;
@@ -74,7 +71,6 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 
-/* Raw, unstyled buttons */
 .nav-btn {
   font-family: var(--mono);
   font-size: 0.85rem;
@@ -90,4 +86,27 @@ h1, h2, h3, h4 {
 .nav-btn:hover, .nav-btn.active {
   background: var(--text);
   color: var(--bg);
+}
+
+@media (max-width: 768px) {
+  .ui-layer {
+    padding: 1.5rem;
+  }
+  header {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+  .nav-btn {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .stack-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .scroll-area {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+  }
 }

@@ -17,7 +17,7 @@ export default function App() {
             </div>
           </div>
           
-          <nav className="interactive" style={{ display: 'flex', gap: '0.5rem' }}>
+          <nav className="interactive" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             {['home', 'projects', 'skills', 'contact'].map((room) => (
               <button 
                 key={room}
@@ -30,7 +30,7 @@ export default function App() {
           </nav>
         </header>
 
-        <main className="interactive" style={{ maxWidth: '800px' }}>
+        <main className="interactive scroll-area" style={{ maxWidth: '800px' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentRoom}
@@ -52,31 +52,37 @@ export default function App() {
                 </div>
               )}
 
-              {currentRoom === 'projects' && (
-                <div>
-                  <h1 className="huge-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>STUFF I BUILT</h1>
-                  <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    
-                    <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
-                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>H7 FLIGHT CONTROLLER</h3>
-                      <p style={{ fontWeight: 600 }}>custom STM32H7 board for FPV drones. 4 layers, 120 parts.</p>
-                      <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ STM32 / KICAD / 24V ]</div>
-                    </div>
+              {currentRoom === 'projects' && (                                                                                                                                                  
+                    <div>                                                                                                                                                                           
+                      <h1 className="huge-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>STUFF I BUILT</h1>                                                                                   
+                      <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>                                                                                    
+                                                                                                                                                                                                    
+                        <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>                                                                                           
+                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>ChromaDeck</h3>                                                                                                
+                          <p style={{ fontWeight: 600 }}>hardware macro pad and control surface.</p>                                                                                                
+                          <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PCB DESIGN / C++ / USB ]</div>                                                                
+                        </div>                                                                                                                                                                      
+                                                                                                                                                                                                    
+                        <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>                                                                                           
+                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Checkout</h3>
+                          <p style={{ fontWeight: 600 }}>2D top-down supermarket management game.</p>                                                                                               
+                          <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ GAME DEV / LOGIC ]</div>                                                                      
+                        </div>                                                                                                                                                                      
+                                                                                                                                                                                                    
+                        <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>                                                                                           
+                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Tower-Zero & AirCade</h3>                                                                                      
+                          <p style={{ fontWeight: 600 }}>various hardware and software experiments.</p>
+                          <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PROTOTYPING / C++ ]</div>                                                                     
+                        </div>                                                                                                                                                                      
 
-                    <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
-                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>QMK MACRO PAD</h3>
-                      <p style={{ fontWeight: 600 }}>rotary encoders, oled screen, way too much rgb.</p>
-                      <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ ATMEGA32U4 / C++ / USB ]</div>
+                      </div>
                     </div>
-
-                  </div>
-                </div>
-              )}
+                  )}
 
               {currentRoom === 'skills' && (
                 <div>
                   <h1 className="huge-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>THE STACK</h1>
-                  <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', fontWeight: 600, fontSize: '1.2rem' }}>
+                  <div className="stack-grid" style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', fontWeight: 600, fontSize: '1.2rem' }}>
                     <div>
                       <h3 style={{ color: '#ff5000', marginBottom: '1rem' }}>HARDWARE</h3>
                       <p>kicad</p>
