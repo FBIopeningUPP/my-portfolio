@@ -1,0 +1,93 @@
+/* src/index.css */
+:root {
+  --bg: #f4f4f0;
+  --text: #111111;
+  --accent: #ff5000; /* Safety Orange */
+  
+  /* Upgraded Fonts */
+  --mono: 'Space Mono', monospace;
+  --sans: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: default; 
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  overflow: hidden; 
+  -webkit-font-smoothing: antialiased;
+  
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Industrial Typography */
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.05em; 
+}
+
+.huge-text {
+  font-size: clamp(4rem, 12vw, 12rem);
+  font-weight: 700;
+  margin-left: -0.06em; 
+}
+
+.mono-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+/* Layout Architecture */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.ui-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.interactive {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Raw, unstyled buttons */
+.nav-btn {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  background: transparent;
+  border: 1px solid var(--text);
+  padding: 0.5rem 1rem;
+  color: var(--text);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background: var(--text);
+  color: var(--bg);
+}
