@@ -39,7 +39,7 @@ export default function ExplodedPCB({ room }) {
           <meshStandardMaterial color="#1a1a1a" roughness={0.7} />
           <mesh position={[0, 0.11, 0]}>
             <planeGeometry args={[5.5, 3.5]} />
-            <meshStandardMaterial color="#ff5000" emissive="#ff5000" emissiveIntensity={2} toneMapped={false} wireframe />
+            <meshStandardMaterial color="#ff5000" emissive="#ff5000" emissiveIntensity={1} toneMapped={false} wireframe />
           </mesh>
         </mesh>
 
@@ -61,7 +61,7 @@ export default function ExplodedPCB({ room }) {
            {[-1.5, -0.75, 0, 0.75, 1.5].map((x, i) => (
             <mesh key={i} position={[x, 0, 1.5]}>
               <boxGeometry args={[0.2, 0.4, 0.2]} />
-              <meshStandardMaterial color="#ff5000" emissive="#ff5000" emissiveIntensity={1.5} toneMapped={false} />
+              <meshStandardMaterial color="#ff5000" emissive="#ff5000" emissiveIntensity={1} toneMapped={false} />
             </mesh>
           ))}
         </group>

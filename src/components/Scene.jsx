@@ -41,7 +41,7 @@ export default function Scene({ room }) {
         <ContactShadows position={[0, -3, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
 
         <EffectComposer disableNormalPass>
-          <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} />
+          <Bloom luminanceThreshold={0.5} mipmapBlur intensity={0.6} />
           <ChromaticAberration blendFunction={BlendFunction.NORMAL} offset={[0.002, 0.002]} />
           <Noise premultiply blendFunction={BlendFunction.ADD} opacity={0.3}/>
         </EffectComposer>
