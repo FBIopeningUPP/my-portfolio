@@ -1,14 +1,36 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import useSound from 'use-sound'
 import Scene from './components/Scene'
 
 export default function App() {
   const [currentRoom, setCurrentRoom] = useState('home')
+  
+  // We don't have a local mp3 file yet, so we will use a beep via Web Audio API 
+  // as a fallback mechanical click for now!
+  const playClick = () => {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.connect(gain)
+    gain.connect(ctx.destination)
+    osc.type = 'square'
+    osc.frequency.setValueAtTime(150, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.05)
+    gain.gain.setValueAtTime(0.1, ctx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05)
+    osc.start()
+    osc.stop(ctx.currentTime + 0.05)
+  }
+
+  const handleNav = (room) => {
+    playClick()
+    setCurrentRoom(room)
+  }
 
   return (
     <div className="app-container">
       <div className="ui-layer">
-        
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div className="interactive">
             <h2 style={{ fontSize: '1.5rem', fontWeight: 900 }}>MILIND.</h2>
@@ -22,7 +44,7 @@ export default function App() {
               <button 
                 key={room}
                 className={`nav-btn ${currentRoom === room ? 'active' : ''}`}
-                onClick={() => setCurrentRoom(room)}
+                onClick={() => handleNav(room)}
               >
                 {room}
               </button>
@@ -52,32 +74,32 @@ export default function App() {
                 </div>
               )}
 
-              {currentRoom === 'projects' && (                                                                                                                                                  
-                    <div>                                                                                                                                                                           
-                      <h1 className="huge-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>STUFF I BUILT</h1>                                                                                   
-                      <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>                                                                                    
-                                                                                                                                                                                                    
-                        <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>                                                                                           
-                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>ChromaDeck</h3>                                                                                                
-                          <p style={{ fontWeight: 600 }}>hardware macro pad and control surface.</p>                                                                                                
-                          <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PCB DESIGN / C++ / USB ]</div>                                                                
-                        </div>                                                                                                                                                                      
-                                                                                                                                                                                                    
-                        <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>                                                                                           
-                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Checkout</h3>
-                          <p style={{ fontWeight: 600 }}>2D top-down supermarket management game.</p>                                                                                               
-                          <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ GAME DEV / LOGIC ]</div>                                                                      
-                        </div>                                                                                                                                                                      
-                                                                                                                                                                                                    
-                        <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>                                                                                           
-                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Tower-Zero & AirCade</h3>                                                                                      
-                          <p style={{ fontWeight: 600 }}>various hardware and software experiments.</p>
-                          <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PROTOTYPING / C++ ]</div>                                                                     
-                        </div>                                                                                                                                                                      
-
-                      </div>
+              {currentRoom === 'projects' && (
+                <div>
+                  <h1 className="huge-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>STUFF I BUILT</h1>
+                  <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    
+                    <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
+                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>ChromaDeck</h3>
+                      <p style={{ fontWeight: 600 }}>hardware macro pad and control surface.</p>
+                      <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PCB DESIGN / C++ / USB ]</div>
                     </div>
-                  )}
+
+                    <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
+                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Checkout</h3>
+                      <p style={{ fontWeight: 600 }}>2D top-down supermarket management game.</p>
+                      <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ GAME DEV / LOGIC ]</div>
+                    </div>
+
+                    <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
+                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Tower-Zero & AirCade</h3>
+                      <p style={{ fontWeight: 600 }}>various hardware and software experiments.</p>
+                      <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PROTOTYPING / C++ ]</div>
+                    </div>
+
+                  </div>
+                </div>
+              )}
 
               {currentRoom === 'skills' && (
                 <div>
@@ -107,7 +129,7 @@ export default function App() {
                   <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '400px', lineHeight: 1.5, fontWeight: 600 }}>
                     open for freelance, collabs, or just talking about crazy hardware ideas.
                   </p>
-                  <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+                  <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                     <a href="mailto:milindsingh486@gmail.com" className="nav-btn" style={{ textDecoration: 'none' }}>EMAIL</a>
                     <a href="https://github.com/FBIopeningUPP" target="_blank" className="nav-btn" style={{ textDecoration: 'none' }}>GITHUB</a>
                     <a href="https://www.linkedin.com/in/milind-singh486" target="_blank" className="nav-btn" style={{ textDecoration: 'none' }}>LINKEDIN</a>
@@ -119,11 +141,10 @@ export default function App() {
           </AnimatePresence>
         </main>
 
-        <footer style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div className="mono-tag interactive">[ EST. 2026 ]</div>
-          <div className="mono-tag interactive" style={{ color: '#ff5000' }}>DRAG TO SPIN</div>
+        <footer style={{ display: 'flex', justifyContent: 'space-between', pointerEvents: 'auto' }}>
+          <div className="mono-tag">[ EST. 2026 ]</div>
+          <div className="mono-tag" style={{ color: '#ff5000' }}>DRAG TO SPIN</div>
         </footer>
-
       </div>
 
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>

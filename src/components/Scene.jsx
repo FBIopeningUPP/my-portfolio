@@ -3,6 +3,8 @@ import { Environment, ContactShadows } from '@react-three/drei'
 import { Suspense } from 'react'
 import * as THREE from 'three'
 import ExplodedPCB from './ExplodedPCB'
+import { EffectComposer, Bloom, Noise, ChromaticAberration } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
 
 function CameraController({ room }) {
   useFrame((state) => {
@@ -37,6 +39,12 @@ export default function Scene({ room }) {
         <ExplodedPCB room={room} />
         <Environment preset="studio" />
         <ContactShadows position={[0, -3, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
+
+        <EffectComposer disableNormalPass>
+          <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} />
+          <ChromaticAberration blendFunction={BlendFunction.NORMAL} offset={[0.002, 0.002]} />
+          <Noise premultiply blendFunction={BlendFunction.ADD} opacity={0.3}/>
+        </EffectComposer>
       </Suspense>
     </Canvas>
   )
