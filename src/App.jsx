@@ -42,7 +42,7 @@ export default function App() {
   }
 
   return (
-    <div className="app-container">
+    <div className="app-container" onContextMenu={(e) => e.preventDefault()}>
       <div className="ui-layer">
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div className="interactive">
@@ -77,9 +77,19 @@ export default function App() {
             >
               
               {currentRoom === 'home' && (
-                <div>
-                  <h1 className="huge-text">HARDWARE</h1>
-                  <h1 className="huge-text" style={{ color: 'transparent', WebkitTextStroke: '2px #111' }}>
+                <div style={{position: 'relative'}}>
+                  <div style={{
+                    position: 'absolute',
+                    top: '40%', left: '20%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '350px', height: '350px',
+                    background: 'rgba(0, 200, 250, 0.15)',
+                    filter: 'blur(80px)',
+                    zIndex: -1, 
+                    pointerEvents: 'none'
+                  }}/>
+                  <h1 className='huge-text glitch-text'>HARDWARE</h1>
+                  <h1 className='huge-text glitch-text' style={{color: 'transparent', WebkitTextStroke: '2px #111'}}>
                     ARCHITECT
                   </h1>
                   <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '400px', lineHeight: 1.5, fontWeight: 600 }}>
