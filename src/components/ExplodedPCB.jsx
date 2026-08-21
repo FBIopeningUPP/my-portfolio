@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Float } from '@react-three/drei'
 import * as THREE from 'three'
@@ -9,6 +9,8 @@ export default function ExplodedPCB({ room }) {
   const chipRef = useRef()
   const topPinsRef = useRef()
   const bottomPinsRef = useRef()
+  const [hovered, setHovered] = useState(false)
+  const [spinning, setSpinning] = useState(false)
 
   useFrame((state) => {
     const isSkills = room === 'skills'
@@ -28,6 +30,17 @@ export default function ExplodedPCB({ room }) {
 
     groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, (state.pointer.y * Math.PI) / 15, 0.05)
     groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, (state.pointer.x * Math.PI) / 15, 0.05)
+
+    const targetScale = hovered ? 1.2:1
+    chipRef.current.scale.setScalar(THREE.MathUtils.lerp(chipRef.current.scale.x, targetScale, 0.1))
+
+    if (spinning) {
+      chipRef.current.rotation.y += 0.2
+      if (chipRef.current.rotation.y > Math.PI * 2) {
+        chipRef.current.rotation.y = 0
+        setSpinning(false)
+      }
+    }
   })
 
   return (
@@ -43,9 +56,15 @@ export default function ExplodedPCB({ room }) {
           </mesh>
         </mesh>
 
-        <mesh ref={chipRef} position={[0, 0.15, 0]}>
-          <boxGeometry args={[1.5, 0.3, 1.5]} />
-          <meshStandardMaterial color="#050505" roughness={0.4} metalness={0.8} />
+        <mesh
+          ref={chipRef}
+          position={[0, 0.15, 0]}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          onClick={() => setSpinning(true)}
+        >
+          <boxGeometry args={[1.5, 0.3, 1.5]}/>
+          <meshStandardMaterial color={hovered ? '#ff5000' : '#050505'} roughness={0.4} metalness={0.8}/>
         </mesh>
 
         <group ref={topPinsRef} position={[0, 0.2, 0]}>

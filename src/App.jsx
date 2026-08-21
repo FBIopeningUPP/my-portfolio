@@ -5,11 +5,9 @@ import Scene from './components/Scene'
 
 export default function App() {
   const [currentRoom, setCurrentRoom] = useState('home')
-  
-  // We don't have a local mp3 file yet, so we will use a beep via Web Audio API 
-  // as a fallback mechanical click for now!
+
   const playClick = () => {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)()
+    const ctx = new (window.AudioContext || window.webkitAudioContext) ()
     const osc = ctx.createOscillator()
     const gain = ctx.createGain()
     osc.connect(gain)
@@ -21,6 +19,21 @@ export default function App() {
     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05)
     osc.start()
     osc.stop(ctx.currentTime + 0.05)
+  }
+
+  const playHover = () => {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.connect(gain)
+    gain.connect(ctx.destination)
+    osc.type = 'sine'
+    osc.frequency.setValueAtTime(300, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.03)
+    gain.gain.setValueAtTime(0.02, ctx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03)
+    osc.start()
+    osc.stop(ctx.currentTime + 0.03)
   }
 
   const handleNav = (room) => {
@@ -45,6 +58,7 @@ export default function App() {
                 key={room}
                 className={`nav-btn ${currentRoom === room ? 'active' : ''}`}
                 onClick={() => handleNav(room)}
+                onMouseEnter={playHover}
               >
                 {room}
               </button>

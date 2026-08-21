@@ -11,7 +11,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  cursor: default; 
+  cursor: crosshair !important; 
 }
 
 body {
@@ -109,4 +109,16 @@ h1, h2, h3, h4 {
     overflow-y: auto;
     padding-right: 1rem;
   }
+}
+
+@keyframes textGlitch {
+  0% {transform: translate(0); text-shadow: none;}
+  2% {transform: translate(-2px, 1px); text-shadow: 2px 0 #ff5000, -2px 0 #00ffff;}
+  4% {transform: translate(2px, -1px); text-shadow: -2px 0 #ff5000, 2px 0 #00ffff;}
+  6% {transform: translate(0); text-shadow: none;}
+  100% {transform: translate(0); text-shadow: none;}
+}
+
+.glitch-text {
+  animation: textGlitch 4s infinite;
 }
