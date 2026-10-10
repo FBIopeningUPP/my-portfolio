@@ -5,6 +5,9 @@ My personal website showcasing my hardware design, firmware, and embedded system
 ## IMAGES
 
 ![alt text](image.png)
+
+## Built with 
+React
 ### Links
 
 - **GitHub**: [github.com/FBIopeningUPP](https://github.com/FBIopeningUPP/)
