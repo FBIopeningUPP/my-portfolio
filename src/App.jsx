@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import useSound from 'use-sound'
 import Scene from './components/Scene'
 
 export default function App() {
@@ -47,8 +46,30 @@ export default function App() {
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div className="interactive">
             <h2 style={{ fontSize: '1.5rem', fontWeight: 900 }}>MILIND.</h2>
-            <div className="mono-tag" style={{ marginTop: '0.5rem', opacity: 0.6 }}>
-              <span>◎</span> VIBE_SYNC
+            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginTop: '0.5rem' }}>
+              <div className="mono-tag" style={{ opacity: 0.6 }}>
+                <span>◎</span> type shit
+              </div>
+              <a 
+                href="https://github.com/FBIopeningUPP/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mono-tag"
+                style={{ opacity: 0.8 }}
+                onMouseEnter={playHover}
+              >
+                GH ↗
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/milind-singh486/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mono-tag"
+                style={{ opacity: 0.8 }}
+                onMouseEnter={playHover}
+              >
+                IN ↗
+              </a>
             </div>
           </div>
           
@@ -92,9 +113,38 @@ export default function App() {
                   <h1 className='huge-text glitch-text' style={{color: 'transparent', WebkitTextStroke: '2px #111'}}>
                     ARCHITECT
                   </h1>
-                  <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '400px', lineHeight: 1.5, fontWeight: 600 }}>
+                  <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '440px', lineHeight: 1.5, fontWeight: 600 }}>
                     i design boards, write firmware, and make things blink. mostly avoiding magic smoke.
                   </p>
+                  <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <button 
+                      className="nav-btn active"
+                      onClick={() => handleNav('projects')}
+                      onMouseEnter={playHover}
+                    >
+                      EXPLORE WORK →
+                    </button>
+                    <a 
+                      href="https://github.com/FBIopeningUPP/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="nav-btn" 
+                      style={{ textDecoration: 'none' }}
+                      onMouseEnter={playHover}
+                    >
+                      GITHUB ↗
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/milind-singh486/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="nav-btn" 
+                      style={{ textDecoration: 'none' }}
+                      onMouseEnter={playHover}
+                    >
+                      LINKEDIN ↗
+                    </a>
+                  </div>
                 </div>
               )}
 
@@ -104,20 +154,62 @@ export default function App() {
                   <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     
                     <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
-                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>ChromaDeck</h3>
-                      <p style={{ fontWeight: 600 }}>hardware macro pad and control surface.</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <div>
+                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>ChromaDeck</h3>
+                          <p style={{ fontWeight: 600 }}>hardware macro pad and control surface.</p>
+                        </div>
+                        <a 
+                          href="https://github.com/FBIopeningUPP/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="mono-tag"
+                          style={{ textDecoration: 'none', color: '#ff5000' }}
+                          onMouseEnter={playHover}
+                        >
+                          GITHUB ↗
+                        </a>
+                      </div>
                       <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PCB DESIGN / C++ / USB ]</div>
                     </div>
 
                     <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
-                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Checkout</h3>
-                      <p style={{ fontWeight: 600 }}>2D top-down supermarket management game.</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <div>
+                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Checkout</h3>
+                          <p style={{ fontWeight: 600 }}>2D top-down supermarket management game.</p>
+                        </div>
+                        <a 
+                          href="https://github.com/FBIopeningUPP/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="mono-tag"
+                          style={{ textDecoration: 'none', color: '#ff5000' }}
+                          onMouseEnter={playHover}
+                        >
+                          GITHUB ↗
+                        </a>
+                      </div>
                       <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ GAME DEV / LOGIC ]</div>
                     </div>
 
                     <div style={{ border: '2px solid #111', padding: '1.5rem', background: '#fff' }}>
-                      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Tower-Zero & AirCade</h3>
-                      <p style={{ fontWeight: 600 }}>various hardware and software experiments.</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <div>
+                          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Tower-Zero & AirCade</h3>
+                          <p style={{ fontWeight: 600 }}>various hardware and software experiments.</p>
+                        </div>
+                        <a 
+                          href="https://github.com/FBIopeningUPP/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="mono-tag"
+                          style={{ textDecoration: 'none', color: '#ff5000' }}
+                          onMouseEnter={playHover}
+                        >
+                          GITHUB ↗
+                        </a>
+                      </div>
                       <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PROTOTYPING / C++ ]</div>
                     </div>
 
@@ -150,13 +242,41 @@ export default function App() {
               {currentRoom === 'contact' && (
                 <div>
                   <h1 className="huge-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>HIT ME UP</h1>
-                  <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '400px', lineHeight: 1.5, fontWeight: 600 }}>
+                  <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '440px', lineHeight: 1.5, fontWeight: 600 }}>
                     open for freelance, collabs, or just talking about crazy hardware ideas.
                   </p>
-                  <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                    <a href="mailto:milindsingh486@gmail.com" className="nav-btn" style={{ textDecoration: 'none' }}>EMAIL</a>
-                    <a href="https://github.com/FBIopeningUPP" target="_blank" className="nav-btn" style={{ textDecoration: 'none' }}>GITHUB</a>
-                    <a href="https://www.linkedin.com/in/milind-singh486" target="_blank" className="nav-btn" style={{ textDecoration: 'none' }}>LINKEDIN</a>
+                  <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', maxWidth: '440px' }}>
+                    <a 
+                      href="mailto:milindsingh486@gmail.com" 
+                      className="nav-btn" 
+                      style={{ textDecoration: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                      onMouseEnter={playHover}
+                    >
+                      <span>EMAIL</span>
+                      <span className="mono-tag" style={{ fontSize: '0.75rem' }}>milindsingh486@gmail.com ↗</span>
+                    </a>
+                    <a 
+                      href="https://github.com/FBIopeningUPP/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="nav-btn" 
+                      style={{ textDecoration: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                      onMouseEnter={playHover}
+                    >
+                      <span>GITHUB</span>
+                      <span className="mono-tag" style={{ fontSize: '0.75rem' }}>/FBIopeningUPP ↗</span>
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/milind-singh486/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="nav-btn" 
+                      style={{ textDecoration: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                      onMouseEnter={playHover}
+                    >
+                      <span>LINKEDIN</span>
+                      <span className="mono-tag" style={{ fontSize: '0.75rem' }}>/in/milind-singh486 ↗</span>
+                    </a>
                   </div>
                 </div>
               )}
@@ -165,8 +285,30 @@ export default function App() {
           </AnimatePresence>
         </main>
 
-        <footer style={{ display: 'flex', justifyContent: 'space-between', pointerEvents: 'auto' }}>
-          <div className="mono-tag">[ EST. 2026 ]</div>
+        <footer style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pointerEvents: 'auto', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div className="mono-tag">[ EST. 2026 ]</div>
+            <a 
+              href="https://github.com/FBIopeningUPP/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mono-tag" 
+              style={{ textDecoration: 'none' }}
+              onMouseEnter={playHover}
+            >
+              GH ↗
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/milind-singh486/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mono-tag" 
+              style={{ textDecoration: 'none' }}
+              onMouseEnter={playHover}
+            >
+              IN ↗
+            </a>
+          </div>
           <div className="mono-tag" style={{ color: '#ff5000' }}>DRAG TO SPIN</div>
         </footer>
       </div>
