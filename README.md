@@ -1,15 +1,41 @@
 # Milind Singh — Portfolio
 
-My personal website showcasing my hardware design, firmware, and embedded systems projects. Built with React, Three.js, and a 3D interactive PCB.
+Interactive 3D portfolio showcasing my hardware architecture, PCB design, and embedded systems work.
 
-## IMAGES
+## Description
 
-![alt text](image.png)
+A personal portfolio built with React and Three.js featuring an interactive 3D circuit board that reacts to navigation, procedural mechanical sound effects, and a schematic drafting aesthetic. It displays my high-speed PCB layouts, firmware repositories, technical skill stack, and contact links.
 
-## Built with 
-React
-### Links
+### Screenshots
 
-- **GitHub**: [github.com/FBIopeningUPP](https://github.com/FBIopeningUPP/)
-- **LinkedIn**: [linkedin.com/in/milind-singh486](https://www.linkedin.com/in/milind-singh486/)
-- **Email**: [milindsingh486@gmail.com](mailto:milindsingh486@gmail.com)
+![type shit](./image.png)
+
+## Getting Started
+
+### Dependencies
+
+* Node.js (v18 or higher)
+* Modern web browser with WebGL support
+
+### Installing
+
+* Clone the repository:
+```bash
+git clone https://github.com/FBIopeningUPP/my-portfolio.git
+cd my-portfolio
+```
+* Install dependencies:
+```bash
+npm install
+```
+
+### Executing program
+
+* Run the development server:
+```bash
+npm run dev
+```
+* Build for production:
+```bash
+npm run build
+```
