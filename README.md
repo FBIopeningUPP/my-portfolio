@@ -1,14 +1,14 @@
 # Milind Singh — Portfolio
 
-Interactive 3D portfolio showcasing my hardware architecture, PCB design, and embedded systems work.
+My personal portfolio website.
 
 ## Description
 
-A personal portfolio built with React and Three.js featuring an interactive 3D circuit board that reacts to navigation, procedural mechanical sound effects, and a schematic drafting aesthetic. It displays my high-speed PCB layouts, firmware repositories, technical skill stack, and contact links.
+A simple personal website to showcase my hardware projects, circuit boards, and code. Built with an interactive 3D board in the background and click sounds as you browse through my work.
 
 ### Screenshots
 
-![type shit](./image.png)
+![Portfolio Preview](./image.png)
 
 ## Getting Started
 
