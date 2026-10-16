@@ -160,7 +160,7 @@ export default function App() {
                           <p style={{ fontWeight: 600 }}>hardware macro pad and control surface.</p>
                         </div>
                         <a 
-                          href="https://github.com/FBIopeningUPP/" 
+                          href="https://github.com/FBIopeningUPP/ChromaDeck" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="mono-tag"
@@ -180,7 +180,7 @@ export default function App() {
                           <p style={{ fontWeight: 600 }}>2D top-down supermarket management game.</p>
                         </div>
                         <a 
-                          href="https://github.com/FBIopeningUPP/" 
+                          href="https://github.com/FBIopeningUPP/Checkout" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="mono-tag"
@@ -199,16 +199,28 @@ export default function App() {
                           <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Tower-Zero & AirCade</h3>
                           <p style={{ fontWeight: 600 }}>various hardware and software experiments.</p>
                         </div>
+                        <div style={{ display: 'flex', gap: '1rem' }}>
                         <a 
-                          href="https://github.com/FBIopeningUPP/" 
+                          href="https://github.com/FBIopeningUPP/Tower-Zero" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="mono-tag"
                           style={{ textDecoration: 'none', color: '#ff5000' }}
                           onMouseEnter={playHover}
                         >
-                          GITHUB ↗
+                          TOWER-ZERO ↗
                         </a>
+                        <a 
+                          href="https://github.com/FBIopeningUPP/AirCade" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="mono-tag"
+                          style={{ textDecoration: 'none', color: '#ff5000' }}
+                          onMouseEnter={playHover}
+                        >
+                          AIRCADE ↗
+                        </a>
+                        </div>
                       </div>
                       <div className="mono-tag" style={{ marginTop: '1rem', color: '#ff5000' }}>[ PROTOTYPING / C++ ]</div>
                     </div>
